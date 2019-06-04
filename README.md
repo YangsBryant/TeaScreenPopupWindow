@@ -14,7 +14,7 @@ allprojects {
 }
 ```
 ```java
-implementation 'com.github.YangsBryant:TeaScreenPopupWindow:1.0.1'
+implementation 'com.github.YangsBryant:TeaScreenPopupWindow:1.0.2'
 ```
 
 ## 主要代码
