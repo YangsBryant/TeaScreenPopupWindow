@@ -128,5 +128,7 @@ setChecked(String color) | 设置item选中时的颜色，默认#0aa666
 setEnabled(String color) | 设置item未选中时的颜色，默认#000000
 setBoxSize(int size) | 设置item字体大小，默认13
 setSingle(boolean bl) | 设置是否开启单选，默认单选
-设置是否开启单选，默认单选 | 显示控件时数据重置
+reset() | 显示控件时数据重置
 build() | 参数设置完毕，一定要build一下
+
+## 联系QQ：961606042
