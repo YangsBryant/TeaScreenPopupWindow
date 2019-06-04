@@ -16,7 +16,7 @@ implementation 'com.github.YangsBryant:TeaScreenPopupWindow:1.0.1'
 ```
 
 ## 主要代码
-···java
+```java
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.button)
