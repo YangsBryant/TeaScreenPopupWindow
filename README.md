@@ -1,7 +1,7 @@
 # TeaScreenPopupWindow
 多类型筛选弹框
 
-![这是一张图片](https://github.com/YangsBryant/TeaScreenPopupWindow/blob/master/image/yjhu8-78hg4.gif)
+![这是一张图片](https://github.com/YangsBryant/TeaScreenPopupWindow/blob/master/image/kfgmg-a8c9e.gif)
 
 ## 引入module
 ```java
