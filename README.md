@@ -85,3 +85,22 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 ```
+## TeaScreenPopupWindow属性大全
+方法名 | 属性
+--------- | -------------
+setTopView(Boolean bl, int color) | 设置顶部分割线是否显示，以及颜色。默认true,#f3f3f3
+setBottomView(Boolean bl, int color) | 设置底部分割线是否显示，以及颜色。默认true,#f3f3f3
+setConfirm(String text, int size, int textColor, int color) | 设置确定按钮的文字，字体大小，字体颜色，背景颜色。默认“确定”，14，#ffffff，#0aa666
+setReset(String text, int size, int textColor, int color) | 设置重置按钮的文字，字体大小，字体颜色，背景颜色。默认“重置”，#000000，#ffffff
+setAlpha(int mAlpha) | 设置阴影层的透明度 默认是0.5f
+setTitleColor(int color) | 设置title的字体颜色,默认#000000
+setTitleSize(int size) | 设置title的字体大小,默认14
+setRadius(int radius) | 设置item圆角大小，默认12
+setStrokeWidth(int width) | 设置item边框粗细，默认2
+setStrokeColor(int color) | 设置item边框颜色，默认#0aa666
+setBoxWidth(int width) | 设置item宽度，默认是200dp
+setBoxHeight(int height) | 设置item高度，默认是WRAP_CONTENT
+setChecked(String color) | 设置item选中时的颜色，默认#0aa666
+setEnabled(String color) | 设置item未选中时的颜色，默认#000000
+setBoxSize(int size) | 设置item字体大小，默认13
+build() | 参数设置完毕，一定要build一下
