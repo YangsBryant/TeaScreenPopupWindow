@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:minHeight="30dp"
+    android:background="@color/white">
+
+    <TextView
+        android:id="@+id/tv_type_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp"
+        android:textSize="14sp"
+        android:text="类型"
+        android:textColor="@color/black"/>
+
+    <com.example.popupwindowlibrary.view.SkuFlowLayout
+        android:layout_marginLeft="15dp"
+        android:paddingBottom="5dp"
+        android:id="@+id/layout_property"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

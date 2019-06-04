@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/topView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_f3" />
+
+    <com.example.popupwindowlibrary.view.CustomHeightListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@null"
+        android:scrollbars="none" />
+    <View
+        android:id="@+id/bottomView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_f3" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tv_reset"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/white"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="重置"
+            android:textColor="@color/black"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tv_confirm"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/green_66"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="确定"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_null"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
