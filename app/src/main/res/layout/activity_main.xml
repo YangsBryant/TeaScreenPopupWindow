@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:gravity="center_horizontal">
 
     <Button
@@ -14,8 +14,15 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10dp"
-        android:text="点我"
+        android:text="单选模式"
         android:layout_marginTop="10dp"/>
 
-
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="多选模式"
+        android:layout_marginTop="10dp"/>
 </LinearLayout>

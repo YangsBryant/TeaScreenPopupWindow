@@ -136,6 +136,24 @@ public class ScreenPopWindow extends PopupWindow {
         return this;
     }
 
+    //设置是否开启单选，默认单选
+    public ScreenPopWindow setSingle(boolean bl){
+        adapter.setSingle(bl);
+        return this;
+    }
+
+    //显示控件时数据重置
+    public ScreenPopWindow reset(){
+        for (int x = 0; x < dictList.size(); x++) {
+            List<FiltrateBean.Children> childrenBeen = dictList.get(x).getChildren();
+            for (int y=0;y<childrenBeen.size();y++){
+                if (childrenBeen.get(y).isSelected())
+                    childrenBeen.get(y).setSelected(false);
+            }
+        }
+        return this;
+    }
+
     //参数设置完毕，一定要build一下
     public void build(){
         initPop();

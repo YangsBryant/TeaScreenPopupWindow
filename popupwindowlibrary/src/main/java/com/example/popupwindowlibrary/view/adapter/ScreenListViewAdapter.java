@@ -30,7 +30,7 @@ public class ScreenListViewAdapter extends BaseAdapter {
     private int boxSize = 13;
     private int titleColor;
     private int titleSize = 14;
-
+    private boolean isSingle = true;
     public ScreenListViewAdapter(Activity context, List<FiltrateBean> dictList) {
         this.context = context;
         this.dictList = dictList;
@@ -76,6 +76,10 @@ public class ScreenListViewAdapter extends BaseAdapter {
 
     public void setTitleSize(int titleSize) {
         this.titleSize = titleSize;
+    }
+
+    public void setSingle(boolean single) {
+        isSingle = single;
     }
 
     @Override
@@ -162,11 +166,18 @@ public class ScreenListViewAdapter extends BaseAdapter {
     private void refreshCheckBox(SkuFlowLayout flowLayout, int finalX, List<FiltrateBean.Children> propBeenList) {
         for (int y = 0; y < flowLayout.getChildCount(); y++) {
             CheckBox radio = (CheckBox) flowLayout.getChildAt(y);
-            radio.setChecked(false);
-            propBeenList.get(y).setSelected(false);
+            if(isSingle) {
+                radio.setChecked(false);
+                propBeenList.get(y).setSelected(false);
+            }
             if (finalX == y) {
-                radio.setChecked(true);
-                propBeenList.get(y).setSelected(true);
+                if(propBeenList.get(y).isSelected()) {
+                    radio.setChecked(false);
+                    propBeenList.get(y).setSelected(false);
+                }else{
+                    radio.setChecked(true);
+                    propBeenList.get(y).setSelected(true);
+                }
             }
         }
     }
