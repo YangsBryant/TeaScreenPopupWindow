@@ -21,9 +21,11 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.button)
     Button button;
+    @BindView(R.id.button2)
+    Button button2;
     private ScreenPopWindow screenPopWindow;
-    private List<FiltrateBean> dictList = new ArrayList<>();
 
+    private List<FiltrateBean> dictList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 screenPopWindow = new ScreenPopWindow(MainActivity.this, dictList);
-                screenPopWindow.build();
+                //默认单选，因为共用的一个bean，这里调用reset重置下数据
+                screenPopWindow.reset().build();
                 screenPopWindow.showAsDropDown(button);
                 screenPopWindow.setOnConfirmClickListener(new ScreenPopWindow.OnConfirmClickListener() {
                     @Override
@@ -47,19 +50,38 @@ public class MainActivity extends AppCompatActivity {
                         for (int i=0;i<list.size();i++) {
                             str.append(list.get(i)).append(" ");
                         }
-                        Toast.makeText(MainActivity.this, str.toString(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(MainActivity.this, str.toString(), Toast.LENGTH_SHORT).show();
                     }
                 });
 
             }
         });
 
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                screenPopWindow = new ScreenPopWindow(MainActivity.this, dictList);
+                //设置多选，因为共用的一个bean，这里调用reset重置下数据
+                screenPopWindow.setSingle(false).reset().build();
+                screenPopWindow.showAsDropDown(button2);
+                screenPopWindow.setOnConfirmClickListener(new ScreenPopWindow.OnConfirmClickListener() {
+                    @Override
+                    public void onConfirmClick(List<String> list) {
+                        StringBuilder str = new StringBuilder();
+                        for (int i=0;i<list.size();i++) {
+                            str.append(list.get(i)).append(" ");
+                        }
+                        Toast.makeText(MainActivity.this, str.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     private void initParam() {
         String[] brand = {"花花公子", "语克","优衣库", "美特斯邦威", "森马", "翰代维", "PUMA"};
         String[] type = {"男装", "T恤", "运动服", "女装", "童装", "紧身衣"};
-        
+
         FiltrateBean fb1 = new FiltrateBean();
         fb1.setTypeName("品牌");
         List<FiltrateBean.Children> childrenList = new ArrayList<>();
@@ -103,4 +125,6 @@ setBoxHeight(int height) | 设置item高度，默认是WRAP_CONTENT
 setChecked(String color) | 设置item选中时的颜色，默认#0aa666
 setEnabled(String color) | 设置item未选中时的颜色，默认#000000
 setBoxSize(int size) | 设置item字体大小，默认13
+setSingle(boolean bl) | 设置是否开启单选，默认单选
+设置是否开启单选，默认单选 | 显示控件时数据重置
 build() | 参数设置完毕，一定要build一下
