@@ -4,15 +4,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.popupwindowlibrary.bean.FiltrateBean;
 import com.example.popupwindowlibrary.view.ScreenPopWindow;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -20,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.button)
     Button button;
-    private ScreenPopWindow flowPopWindow;
+    private ScreenPopWindow screenPopWindow;
     private List<FiltrateBean> dictList = new ArrayList<>();
 
     @Override
@@ -36,10 +32,10 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                flowPopWindow = new ScreenPopWindow(MainActivity.this, dictList);
-                flowPopWindow.build();
-                flowPopWindow.showAsDropDown(button);
-                flowPopWindow.setOnConfirmClickListener(new ScreenPopWindow.OnConfirmClickListener() {
+                screenPopWindow = new ScreenPopWindow(MainActivity.this, dictList);
+                screenPopWindow.build();
+                screenPopWindow.showAsDropDown(button);
+                screenPopWindow.setOnConfirmClickListener(new ScreenPopWindow.OnConfirmClickListener() {
                     @Override
                     public void onConfirmClick(List<String> list) {
                         StringBuilder str = new StringBuilder();
