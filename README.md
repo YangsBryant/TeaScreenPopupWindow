@@ -26,8 +26,10 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.button2)
     Button button2;
     private ScreenPopWindow screenPopWindow;
+    private ScreenPopWindow screenPopWindow2;
 
     private List<FiltrateBean> dictList = new ArrayList<>();
+    private List<FiltrateBean> dictList2 = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +40,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
+        screenPopWindow = new ScreenPopWindow(MainActivity.this, dictList);
+        screenPopWindow.build();
+        screenPopWindow2 = new ScreenPopWindow(MainActivity.this, dictList2);
+        //设置多选
+        screenPopWindow2.setSingle(false).build();
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                screenPopWindow = new ScreenPopWindow(MainActivity.this, dictList);
-                //默认单选，因为共用的一个bean，这里调用reset重置下数据
-                screenPopWindow.reset().build();
                 screenPopWindow.showAsDropDown(button);
                 screenPopWindow.setOnConfirmClickListener(new ScreenPopWindow.OnConfirmClickListener() {
                     @Override
@@ -62,11 +67,8 @@ public class MainActivity extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                screenPopWindow = new ScreenPopWindow(MainActivity.this, dictList);
-                //设置多选，因为共用的一个bean，这里调用reset重置下数据
-                screenPopWindow.setSingle(false).reset().build();
-                screenPopWindow.showAsDropDown(button2);
-                screenPopWindow.setOnConfirmClickListener(new ScreenPopWindow.OnConfirmClickListener() {
+                screenPopWindow2.showAsDropDown(button2);
+                screenPopWindow2.setOnConfirmClickListener(new ScreenPopWindow.OnConfirmClickListener() {
                     @Override
                     public void onConfirmClick(List<String> list) {
                         StringBuilder str = new StringBuilder();
@@ -104,8 +106,31 @@ public class MainActivity extends AppCompatActivity {
         }
         fb2.setChildren(childrenList2);
 
+        FiltrateBean fb3 = new FiltrateBean();
+        fb3.setTypeName("品牌");
+        List<FiltrateBean.Children> childrenList3 = new ArrayList<>();
+        for (String aBrand : brand) {
+            FiltrateBean.Children cd = new FiltrateBean.Children();
+            cd.setValue(aBrand);
+            childrenList3.add(cd);
+        }
+        fb3.setChildren(childrenList3);
+
+        FiltrateBean fb4 = new FiltrateBean();
+        fb4.setTypeName("品牌");
+        List<FiltrateBean.Children> childrenList4 = new ArrayList<>();
+        for (String aBrand : brand) {
+            FiltrateBean.Children cd = new FiltrateBean.Children();
+            cd.setValue(aBrand);
+            childrenList4.add(cd);
+        }
+        fb4.setChildren(childrenList4);
+
         dictList.add(fb1);
         dictList.add(fb2);
+
+        dictList2.add(fb3);
+        dictList2.add(fb4);
     }
 }
 ```
