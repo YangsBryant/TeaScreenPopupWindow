@@ -10,6 +10,20 @@
         android:layout_height="1dp"
         android:background="@color/gray_f3" />
 
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/popupTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone"
+     />
+
     <com.example.popupwindowlibrary.view.CustomHeightListView
         android:id="@+id/listview"
         android:layout_width="match_parent"

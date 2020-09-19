@@ -31,6 +31,9 @@ public class ScreenListViewAdapter extends BaseAdapter {
     private int titleColor;
     private int titleSize = 14;
     private boolean isSingle = true;
+    private boolean isHideRadio = false;
+    private boolean isHideTitle = true;
+    private ArrowClickListener arrowClickListener;
     public ScreenListViewAdapter(Activity context, List<FiltrateBean> dictList) {
         this.context = context;
         this.dictList = dictList;
@@ -82,6 +85,22 @@ public class ScreenListViewAdapter extends BaseAdapter {
         isSingle = single;
     }
 
+    public boolean isHideRadio() {
+        return isHideRadio;
+    }
+
+    public void setHideRadio(boolean hideRadio) {
+        isHideRadio = hideRadio;
+    }
+
+    public boolean isHideTitle() {
+        return isHideTitle;
+    }
+
+    public void setHideTitle(boolean hideTitle) {
+        isHideTitle = hideTitle;
+    }
+
     @Override
     public int getCount() {
         return dictList.size();
@@ -105,6 +124,11 @@ public class ScreenListViewAdapter extends BaseAdapter {
             vh = new ViewHolder();
             vh.tvTypeName = convertView.findViewById(R.id.tv_type_name);
             vh.layoutProperty = convertView.findViewById(R.id.layout_property);
+            if(isHideTitle){
+                vh.tvTypeName.setVisibility(View.VISIBLE);
+            }else{
+                vh.tvTypeName.setVisibility(View.GONE);
+            }
             convertView.setTag(vh);
         } else {
             vh = (ViewHolder) convertView.getTag();
@@ -114,16 +138,16 @@ public class ScreenListViewAdapter extends BaseAdapter {
         vh.tvTypeName.setText(filtrateBean.getTypeName());
         vh.tvTypeName.setTextColor(titleColor);
         vh.tvTypeName.setTextSize(titleSize);
-        setFlowLayoutData(filtrateBean.getChildren(), vh.layoutProperty);
+        setFlowLayoutData(filtrateBean.getChildren(), vh.layoutProperty,position);
 
         return convertView;
     }
 
-    private void setFlowLayoutData(final List<FiltrateBean.Children> childrenList, final SkuFlowLayout flowLayout) {
+    private void setFlowLayoutData(final List<FiltrateBean.Children> childrenList, final SkuFlowLayout flowLayout, final int position) {
 
         flowLayout.removeAllViews();
         for (int x = 0; x < childrenList.size(); x++) {
-            CheckBox checkBox = (CheckBox) View.inflate(context, R.layout.item_flowlayout_bill, null);
+            final CheckBox checkBox = (CheckBox) View.inflate(context, R.layout.item_flowlayout_bill, null);
             GradientDrawable drawable = new GradientDrawable();
             //设置圆角大小
             drawable.setCornerRadius(radius);
@@ -171,6 +195,9 @@ public class ScreenListViewAdapter extends BaseAdapter {
                 propBeenList.get(y).setSelected(false);
             }
             if (finalX == y) {
+                if(isHideRadio&&arrowClickListener!=null){
+                    arrowClickListener.onArrowClick(radio.getText().toString());
+                }
                 if(propBeenList.get(y).isSelected()) {
                     radio.setChecked(false);
                     propBeenList.get(y).setSelected(false);
@@ -185,5 +212,13 @@ public class ScreenListViewAdapter extends BaseAdapter {
     class ViewHolder {
         private TextView tvTypeName;
         private SkuFlowLayout layoutProperty;
+    }
+
+    public interface ArrowClickListener {
+        void onArrowClick(String text);
+    }
+
+    public void setArrowListener(ArrowClickListener arrowClickListener) {
+        this.arrowClickListener = arrowClickListener;
     }
 }
