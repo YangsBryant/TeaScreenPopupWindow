@@ -2,13 +2,15 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    >
 
     <View
         android:id="@+id/topView"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/gray_f3" />
+        android:background="@color/gray_f3"
+        />
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/popupTitle"
@@ -20,7 +22,6 @@
         android:gravity="center"
         android:background="@color/white"
         android:paddingTop="10dp"
-        android:paddingBottom="10dp"
         android:visibility="gone"
      />
 
@@ -30,7 +31,10 @@
         android:layout_height="wrap_content"
         android:cacheColorHint="@android:color/transparent"
         android:divider="@null"
-        android:scrollbars="none" />
+        android:scrollbars="none"
+        android:paddingTop="10dp"
+        android:background="@color/white"
+        />
     <View
         android:id="@+id/bottomView"
         android:layout_width="match_parent"
@@ -70,6 +74,7 @@
         android:id="@+id/view_null"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        />
 
 </LinearLayout>

@@ -4,7 +4,8 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:minHeight="30dp"
-    android:background="@color/white">
+    android:background="@color/white"
+    >
 
     <TextView
         android:id="@+id/tv_type_name"
